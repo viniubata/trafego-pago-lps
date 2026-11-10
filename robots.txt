@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vertice-porcelanato.vercel.app/sitemap.xml
