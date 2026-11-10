@@ -258,3 +258,18 @@ details p{padding:0 2px 22px;color:var(--muted);max-width:70ch}
  tr td:last-child{border-bottom:0}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}.js .reveal.pre{transform:none;opacity:1}.js .card img{opacity:1}}
+
+/* ===== Modal do formulário ===== */
+.fm{position:fixed;inset:0;z-index:90;background:rgba(18,18,16,.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:grid;place-items:center;overflow-y:auto;overscroll-behavior:contain;padding:max(16px,env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
+.fm-box{position:relative;width:100%;max-width:680px;background:var(--paper);color:var(--ink);border-radius:6px;padding:clamp(22px,4vw,34px) clamp(18px,4vw,34px) clamp(18px,3vw,28px);display:grid;gap:8px;margin-block:auto;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.fm-box .eyebrow{padding-right:48px}
+.fm-box h2{font-size:clamp(1.5rem,1.2rem + 1.2vw,2.1rem);padding-right:40px}
+.fm-sub{color:var(--muted);font-size:.92rem}
+.fm-box form{padding:14px 0 0;background:none;gap:14px}
+.fm-close{all:unset;box-sizing:border-box;cursor:pointer;position:absolute;top:12px;right:12px;width:42px;height:42px;display:grid;place-items:center;border-radius:50%;color:var(--ink);background:var(--bg)}
+.fm-close:hover{background:var(--line)}
+.fm-close:focus-visible{outline:2px solid var(--gold)}
+.fm-close svg{width:20px;height:20px}
+.fm:not([hidden]) .fm-box{animation:up .35s var(--ease) both}
+form.done{display:block}
+@media (max-width:559px){.fm{place-items:end center;padding-bottom:0}.fm-box{border-radius:12px 12px 0 0;margin-block:auto 0}}

@@ -83,9 +83,11 @@ function setupForm(form, px) {
     box.classList.toggle('err', r !== true); box.querySelector('.msg').textContent = r === true ? '' : r;
     el.setAttribute('aria-invalid', r !== true); return r === true;
   };
-  Object.keys(RULES).forEach(k => document.getElementById(px + k).addEventListener('blur', () => check(k)));
+  let tried = false;
+  Object.keys(RULES).forEach(k => { const el = document.getElementById(px + k); const fn = () => { if (tried || el.value) check(k); }; el.addEventListener('blur', fn); el.addEventListener('change', fn); });
   form.addEventListener('submit', async e => {
     e.preventDefault();
+    tried = true;
     const bad = Object.keys(RULES).filter(k => !check(k));
     if (bad.length) { document.getElementById(px + bad[0]).focus(); return; }
     const d = Object.fromEntries(new FormData(form));
