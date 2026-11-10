@@ -60,8 +60,7 @@ document.getElementById('lb-cta').addEventListener('click', () => {
   const c = visible()[cur];
   fAmb.value = c.dataset.amb; fAcab.value = c.dataset.acab;
   fMsg.value = `Gostei do projeto: ${c.dataset.title}.`;
-  closeLb(); document.getElementById('orcamento').scrollIntoView({ behavior: 'smooth' });
-  setTimeout(() => document.getElementById('f-nome').focus({ preventScroll: true }), 600);
+  closeLb(); openForm(null);
 });
 
 /* ===== Formulário ===== */
@@ -114,3 +113,4 @@ function closeForm() { home.insertBefore(form, anchor.nextSibling); fm.hidden = 
 fm.querySelector('.fm-close').addEventListener('click', closeForm);
 fm.addEventListener('click', e => { if (e.target === fm) closeForm(); });
 document.addEventListener('keydown', e => { if (!fm.hidden && e.key === 'Escape') closeForm(); });
+document.querySelectorAll('a[href="#orcamento"]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openForm(a); }));
